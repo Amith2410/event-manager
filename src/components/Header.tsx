@@ -1,5 +1,6 @@
 import { Ticket } from 'lucide-react';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 export function Header() {
   return (
@@ -11,6 +12,11 @@ export function Header() {
             Hubballi Happenings
           </h1>
         </Link>
+        <nav>
+          <Button asChild variant="ghost">
+            <Link href="/news">Latest News</Link>
+          </Button>
+        </nav>
       </div>
     </header>
   );

@@ -11,7 +11,6 @@ interface EventListProps {
 
 export function EventList({ events }: EventListProps) {
   const [searchTerm, setSearchTerm] = useState('');
-  const [city, setCity] = useState('');
   const [category, setCategory] = useState('all');
   const [date, setDate] = useState<Date | undefined>(undefined);
 
@@ -24,12 +23,11 @@ export function EventList({ events }: EventListProps) {
         (searchTerm === '' ||
           event.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
           event.description.toLowerCase().includes(searchTerm.toLowerCase())) &&
-        (city === '' || event.city.toLowerCase().includes(city.toLowerCase())) &&
         (category === 'all' || event.category === category) &&
         (!filterDate || eventDate.getTime() === filterDate.getTime())
       );
     });
-  }, [events, searchTerm, city, category, date]);
+  }, [events, searchTerm, category, date]);
 
   const categories = useMemo(() => ['all', ...Array.from(new Set(events.map(e => e.category)))], [events]);
 
@@ -38,8 +36,6 @@ export function EventList({ events }: EventListProps) {
       <EventFilters
         searchTerm={searchTerm}
         onSearchTermChange={setSearchTerm}
-        city={city}
-        onCityChange={setCity}
         category={category}
         onCategoryChange={setCategory}
         date={date}

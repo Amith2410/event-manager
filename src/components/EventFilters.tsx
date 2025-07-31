@@ -14,8 +14,6 @@ import { cn } from '@/lib/utils';
 interface EventFiltersProps {
   searchTerm: string;
   onSearchTermChange: (value: string) => void;
-  city: string;
-  onCityChange: (value: string) => void;
   category: string;
   onCategoryChange: (value: string) => void;
   date: Date | undefined;
@@ -26,8 +24,6 @@ interface EventFiltersProps {
 export function EventFilters({
   searchTerm,
   onSearchTermChange,
-  city,
-  onCityChange,
   category,
   onCategoryChange,
   date,
@@ -36,7 +32,6 @@ export function EventFilters({
 }: EventFiltersProps) {
   const clearFilters = () => {
     onSearchTermChange('');
-    onCityChange('');
     onCategoryChange('all');
     onDateChange(undefined);
   };
@@ -46,7 +41,7 @@ export function EventFilters({
        <div className="mb-4">
         <h2 className="text-xl font-headline font-semibold">Find Your Next Event</h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
         <div className="lg:col-span-2 space-y-2">
           <Label htmlFor="search">Search Events</Label>
           <div className="relative">
@@ -59,15 +54,6 @@ export function EventFilters({
               className="pl-10"
             />
           </div>
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="city">City</Label>
-          <Input
-            id="city"
-            placeholder="e.g. Hubballi"
-            value={city}
-            onChange={e => onCityChange(e.target.value)}
-          />
         </div>
         <div className="space-y-2">
           <Label htmlFor="category">Category</Label>
