@@ -20,3 +20,6 @@ git clone https://github.com/Amith2410/event-manager.git
 cd event-manager
 npm install
 npm start
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
